@@ -94,6 +94,17 @@ merge 和 rebase 解决冲突的方式主要有三种
 
     git checkout -b [branch name] = git branch [branch name] + git checkout [branch name]
 
+    // 将代码复原到任何一个状态，但不修改仓库中的任何信息
+    git checkout {任何代表分支状态的东西}
+    //exp:
+    git checkout v1.0
+    git checkout fa3456
+    git checkout master
+    git checkout origin/master
+    // 新建分支
+    git checkout -b {任何代表分支状态的东西}
+    
+    
     git commit --amend
     git reset origin/master --hard
     //thefuck github
