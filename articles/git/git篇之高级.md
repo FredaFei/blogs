@@ -22,7 +22,7 @@ merge 和 rebase 解决冲突的方式主要有三种
 ```
 合并后的示意图：
 
-![merge 后的路线图](https://github.com/FredaFei/blogs/blob/master/articles/git/images/merge.jpg){:height="80px" width="200px"}
+![merge 后的路线图](https://github.com/FredaFei/blogs/blob/master/articles/git/images/merge.jpg)
 
 *优点：*
 + 操作简单；
@@ -68,7 +68,7 @@ merge 和 rebase 解决冲突的方式主要有三种
 ```
 合并后的示意图：
 
-![rebase 后的路线图](https://github.com/FredaFei/blogs/blob/master/articles/git/images/rebase.jpg){:height="80px" width="200px"}
+![rebase 后的路线图](https://github.com/FredaFei/blogs/blob/master/articles/git/images/rebase.jpg)
 
 
 *优点：*
