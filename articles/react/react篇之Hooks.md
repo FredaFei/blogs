@@ -572,4 +572,8 @@ setA 接受函数
 
 ##### 自定义 Hook
 
+[code](https://codesandbox.io/s/custom-hooks-urghy)
+
 #### 什么时候使用 React Hooks
++ 更喜欢写Function Component
++ 更细致的抽取公共逻辑，不想使用HOC等
