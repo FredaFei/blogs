@@ -8,6 +8,9 @@
 + [scss篇之基础](https://github.com/FredaFei/blogs/blob/master/articles/styles/scss%E7%AF%87%E4%B9%8B%E5%9F%BA%E7%A1%80.md)
 + [scss篇之高级](https://github.com/FredaFei/blogs/blob/master/articles/styles/scss%E7%AF%87%E4%B9%8B%E9%AB%98%E7%BA%A7.md)
 
+#### javaScript
++ [javaScript深入之call-apply-bind原理和实现](https://github.com/FredaFei/blogs/blob/master/articles/javaScript/javaScript%E6%B7%B1%E5%85%A5%E4%B9%8Bcall-apply-bind.md)
+
 #### Vue
 + [vue项目中的一些问题和思考](https://github.com/FredaFei/blogs/blob/master/articles/vue/vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E6%80%9D%E8%80%83.md)
 + [vue-cli3 自定义项目配置](https://github.com/FredaFei/blogs/blob/master/articles/vue/vue-cli3%20%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE.md)
