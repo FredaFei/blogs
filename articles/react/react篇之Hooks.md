@@ -1,16 +1,17 @@
 #### 什么是 React Hooks
-
+可从以下两方面解释：
 ##### React Hooks 诞生背景
 + function component若是要拥有自己的状态，需要使用class component
 + 组件复杂度增加时，抽象和调试困难，会遇到多个状态嵌套，wrapper地狱
-+ 业务逻辑复杂时，复用困难
++ 业务逻辑复杂时，复用困难，开发体验差
 
-#### React Hooks 解决的痛点
+##### React Hooks 解决的痛点
 + 更容易和适合将组件的UI与逻辑分离，逻辑复用
-+ 更函数式，对TS友好，更容易阅读和单测
++ 更函数式，对TS友好，更容易阅读和单测，开发体验好
 + Hooks 可以引用其他 Hooks
 
 #### React Hooks 有哪些功能
+
 ##### useState
 适用场景：作为组件自身的状态，和class Component 的 state作用一样
 
@@ -332,7 +333,7 @@ setA 接受函数
 ```
 
 ##### useContext
-适用场景：全局变量（全局上下文）
+适用场景：全局变量（全局上下文），共享数据
 
 使用形式：
 + 创建全局上下文，Context = createContext(initial)
