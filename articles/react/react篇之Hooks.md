@@ -397,6 +397,10 @@ setA 接受函数
 
 [code](https://codesandbox.io/s/react-hooks-usecontext-o2mjz?file=/src/index.js)
 
+###### 思考：
+
+[React Hooks Replace Redux](https://medium.com/swlh/stop-asking-if-react-hooks-replace-redux-448c54d79551)
+
 ##### useMemo
 例子：
 
