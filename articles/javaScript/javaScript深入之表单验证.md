@@ -11,7 +11,7 @@
     
 #### API设计
 
-参考优秀的表单验证库，取其精华，去其槽粕
+参考优秀的表单验证库，取其精华
 
 + [async-validator](https://github.com/yiminghe/async-validator) Validate form asynchronous，Element UI 和 ant design 用的就是这款
 + [validatorjs/validate.js](https://github.com/validatorjs/validator.js) A library of string validators and sanitizers.
@@ -175,6 +175,10 @@ function ensureArray(obj, key) {
 ```
 
 [code](https://github.com/FredaFei/amazing-ui/blob/master/src/validate.js)
+
++ 优点
+  + 组合使用方便，不论项目是用Vue/React/jQ/原生js
+  + 可做[单元测试](https://github.com/FredaFei/amazing-ui/blob/master/tests/unit/validate.spec.js)，迭代无惧；
 
 不足之处，不支持异步校验。若要实现异步验证提供两种方案
 
