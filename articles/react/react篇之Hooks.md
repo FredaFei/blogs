@@ -10,6 +10,8 @@
 + 更函数式，对TS友好，更容易阅读和单测，开发体验好
 + Hooks 可以引用其他 Hooks
 
+[React Hook 官方文档](https://reactjs.org/docs/hooks-intro.html)
+
 #### React Hooks 有哪些功能
 
 ##### useState
