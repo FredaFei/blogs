@@ -24,3 +24,6 @@
 
 #### Webpack
 + [vue+webpack 多项目独立打包配置实践](https://github.com/FredaFei/blogs/blob/master/articles/webpack/vue%2Bwebpack%20%E5%A4%9A%E9%A1%B9%E7%9B%AE%E7%8B%AC%E7%AB%8B%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE%E5%AE%9E%E8%B7%B5.md)
+
+#### TypeScript
++ [常用知识点](https://github.com/FredaFei/blogs/blob/master/articles/typeScript/%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0.md)
