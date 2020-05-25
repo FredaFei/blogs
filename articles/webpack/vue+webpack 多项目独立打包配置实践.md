@@ -57,12 +57,11 @@ https://github.com/FredaFei/mutile-webpack
  3. 根据不同的运行环境，与第二步中的基本配置合并；
  4. 获取`package.json`中`pages`值并将它循环遍历，作为每次打包的项目名，结合第三步得到当前打包项目的完整配置；
  5. 在`package.json`文件中配置启动命令```"build": "webpack --env=[生产环境]"```;
- 
-具体配置信息可参考此仓库代码
-https://github.com/lihongbin100/any-page-demo
 
-总结： 每次需要打包什么项目就在`package.json`中配置好```pages```字段就可以了。
+总结： 每次需要打包什么项目就在`package.json`中配置好```pages```
+
 优点：配置简单，实现起来也比较容易。
+
 缺点：每次都要手动更改```pages```字段，若需要对所有项目打包，该字段输入将较为冗长。
 不过这个缺点是可以通过其他方式来解决，比如给定```"pages"： "all"```来判断是否打包全部，来指定需要打包的项目名。
 
