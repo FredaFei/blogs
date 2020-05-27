@@ -1,6 +1,6 @@
-轮播有很多功能，这篇文章主要分析怎么处理无缝轮播。
-以如下轮播草图为例：
-![轮播草图](https://github.com/FredaFei/blogs/blob/master/articles/react/images/slides/1.jpg)
+轮播有很多功能，这篇文章主要分析怎么处理无缝轮播。以如下轮播草图为例：
+
+![轮播草图](https://github.com/FredaFei/blogs/blob/master/articles/react/images/slides/1.jpg){:height="50%" width="50%"}
 
 主要方案有以下几种代表：
 
