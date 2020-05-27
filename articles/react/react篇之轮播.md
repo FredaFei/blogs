@@ -1,6 +1,6 @@
 轮播有很多功能，这篇文章主要分析怎么处理无缝轮播。以如下轮播草图为例：
 
-![轮播草图](https://github.com/FredaFei/blogs/blob/master/articles/react/images/slides/1.jpg){:height="50%" width="50%"}
+![轮播草图](https://github.com/FredaFei/blogs/blob/master/articles/react/images/slides/1.jpg)
 
 主要方案有以下几种代表：
 
@@ -10,8 +10,10 @@
 3. 当滑动到队头复制的元素上时，把当前位置设置为真实第一张的位置；
 4. 当滑动到队尾复制的元素上时，把当前位置设置为真实最后一张的位置；
 
-DOM结构中共有六张轮播图，通过操作Dom实现无缝
+DOM结构中共有六张轮播图，通过操作Dom实现无缝。
+
 复制后的图
+
 ![复制后的图](https://github.com/FredaFei/blogs/blob/master/articles/react/images/slides/2.jpg)
 
 优点：无论用是否用库或者框架，均支持。
@@ -25,10 +27,12 @@ DOM结构中共有六张轮播图，通过操作Dom实现无缝
 
 DOM结构中共有一张轮播图，通过动画实现。[效果预览](https://fredafei.github.io/amazing-ui/components/slides.html)
 
-
 初始图
+
 ![初始图](https://github.com/FredaFei/blogs/blob/master/articles/react/images/slides/3.jpg)
+
 播放下一张图
+
 ![动图](https://github.com/FredaFei/blogs/blob/master/articles/react/images/slides/4.jpg)
 
 优点：Vue实现起来方便，不操作DOM
@@ -48,4 +52,5 @@ DOM结构中共有四张轮播图，通过动画实现。[效果预览](https://
 缺点：暂无
 
 推荐阅读
-[react 无缝轮播](https://codepen.io/shadowwalkerzero/pen/rvGvjJ?editors=1010)
+
++ [react 无缝轮播 纯数据驱动](https://codepen.io/shadowwalkerzero/pen/rvGvjJ?editors=1010)
