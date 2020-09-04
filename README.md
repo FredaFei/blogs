@@ -12,6 +12,7 @@
 + [javaScript深入之异步错误捕获](https://github.com/FredaFei/blogs/blob/master/articles/javaScript/javaScript%E6%B7%B1%E5%85%A5%E4%B9%8B%E5%BC%82%E6%AD%A5%E9%94%99%E8%AF%AF%E6%8D%95%E8%8E%B7.md)
 + [javaScript深入之call-apply-bind原理和实现](https://github.com/FredaFei/blogs/blob/master/articles/javaScript/javaScript%E6%B7%B1%E5%85%A5%E4%B9%8Bcall-apply-bind.md)
 + [javaScript深入之表单验证](https://github.com/FredaFei/blogs/blob/master/articles/javaScript/javaScript%E6%B7%B1%E5%85%A5%E4%B9%8B%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81.md)
++ [javaScript深入之promisify](https://github.com/FredaFei/blogs/blob/master/articles/javaScript/javaScript%E6%B7%B1%E5%85%A5%E4%B9%8Bpromisify.md)
 + [javaScript深入之拖动和多个元素拖动](https://github.com/FredaFei/drag)
 
 #### Vue
