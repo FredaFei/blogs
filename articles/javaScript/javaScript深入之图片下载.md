@@ -1,4 +1,4 @@
-### 在不依赖后端的情况下，JS如何下载资源？
+### 在不依赖后端的情况下，JS如何实现资源下载？
 
 简单，创建临时`a`标签，手动触发点击事件。伪代码如下：
 
@@ -19,56 +19,69 @@
 
 ### 那针对以上情况图片资源如何下载？
 
-+
+思路：
++ 使用图片地址，创建Image实例
++ 图片资源加载后，创建canvas，drawImage(Image实例)
++ 获取canvas对象，canvas.toBlob获取blob对象
++ 将blob转换为File
++ 调用URL.createObjectURL(imageFile)生产新的资源地址
++ 创建`a`标签，手动触发点击事件
 
+以上思路主要是通过转换图片地址，以此躲过浏览器对`a`元素中的图片地址检测
+
+具体代码如下：
+    
 ```js
     /**
- * 根据image生成canvas
- * */
-function generateCanvas(img) {
-    const canvas = document.createElement('canvas');
-    canvas.width = img.width;
-    canvas.height = img.height;
-    const ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0, img.width, img.height);
-    return canvas;
-}
-
-function generateImage(src, callback) {
-    return new Promise((resolve, reject) => {
-        const image = new Image();
-        image.src = src + '?v=' + Math.random(); // 处理缓存
-        image.crossOrigin = '*';  // 支持跨域图片
-        function onLoadImage() {
-            const canvas = generateCanvas(image);
-            if (!canvas) {
-                reject('canvas不存在，未绘制任何数据');
+     * 根据image生成canvas
+     * */
+    function generateCanvas(img) {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, img.width, img.height);
+        return canvas;
+    }
+    
+    function generateImage(src, callback) {
+        return new Promise((resolve, reject) => {
+            const image = new Image();
+            image.src = src + '?v=' + Math.random(); // 处理缓存
+            image.crossOrigin = '*';  // 支持跨域图片
+            function onLoadImage() {
+                const canvas = generateCanvas(image);
+                    if (!canvas) {
+                        reject('canvas不存在，未绘制任何数据');
+                    }
+                    resolve(canvas);
             }
-            resolve(canvas)
-        }
-
-        image.onload = onLoadImage;
-    })
-}
-
-function generateLinkElement(imageBlob) {
-    const fileName = new Date().getTime().toString();
-    const imageFile = new File([ imageBlob ], `${fileName}.jpg`);
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(imageFile);
-    a.download = `${fileName}.jpg`;
-    a.target = 'download';
-    a.click();
-}
-
-function downloadImage(url) {
-    generateImage(url).then(canvas => {
-        canvas.toBlob(blob => {
-            generateLinkElement(blob)
-        }, 'image/jpeg', 90);
-    })
-}
-
-downloadImage('http://192.168.8.61:8800/file/work/5fe40092d5279e64862e52f5/images/20201224125100817146.jpeg')
+            
+            image.onload = onLoadImage;
+        });
+    }
+    
+    function blobToFile(blob) {
+        const fileName = new Date().getTime().toString();
+        const file = new File([blob], `${ fileName }.jpg`);
+        generateLinkElement(file, fileName);
+    }
+    
+    function generateLinkElement(file, fileName) {
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(file);
+        a.download = `${ fileName }.jpg`;
+        a.target = 'download';
+        a.click();
+    }
+    
+    function downloadImage(url) {
+        generateImage(url).then(canvas => {
+            canvas.toBlob(blob => blobToFile(blob), 'image/jpeg', 90);
+        }, error => {
+            console.warn(error);
+        });
+    }
+    
+    downloadImage('https://www.mocky.io/v2/5cc8019d300000980a055e76');
 ```
-https://www.cnblogs.com/minigrasshopper/p/9042686.html
