@@ -10,6 +10,7 @@
 + Promise & 优缺点
 + Event Loop
 + 实现一个深拷贝
++ LazyMan
 
 #### Vue
 + 组件通信方式
