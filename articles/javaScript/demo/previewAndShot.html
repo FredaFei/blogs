@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <img src="./cat.jpg" alt=""> -->
+    
+    <input type="file" onchange="previewFile()">
+    <fieldset>
+        <h1>预览</h1>
+        <img src="" height="200" alt="Image preview...">
+    </fieldset>
+    <fieldset id="screen-shot">
+        <h1>截图</h1>
+    </fieldset>
+
+    <script>
+        const preview = document.querySelector('img');
+        /**
+         * 图片预览
+        */
+        function previewFile() {
+            const file = document.querySelector('input[type=file]').files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                preview.src = reader.result;
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+        /**
+         * 截图
+        */
+        function screenshot(image, width, height){
+            return new Promise((resolve,reject)=>{
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const context = canvas.getContext('2d');
+                // const image = new Image(width, height);
+                // image.src = data as string;
+                image.onload = () => {
+                    context.drawImage(image, 0, 0, width, height);
+                    canvas.toBlob(resolve, 'image/jpeg');
+                };
+            })
+        }
+        /**
+         * 图片上传
+        */
+        function uploadImage({ imageData, name }) {
+            const url = URL.createObjectURL(imageData);
+            console.log('截图', url);
+            const img = document.createElement('img');
+            img.src = url;
+            img.alt = name;
+            const shot = document.getElementById('screen-shot')
+            shot.append(img);
+        }
+        /**
+         * 截图后上传
+        */
+        async function init(image,shotImageWidth, shotImageHeight){
+            const imageBlob = await screenshot(image,shotImageWidth, shotImageHeight);
+            const fileName = `${Date.now()}.jpg`;
+            const file = new File([ imageBlob ], fileName);
+            uploadImage({ name: fileName, imageData: file });
+        }
+        
+        init(preview,300,200)
+    </script>
+</body>
+</html>
