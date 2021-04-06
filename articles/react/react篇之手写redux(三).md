@@ -25,9 +25,9 @@ const getUser = ()=>{
 ```
 核心代码如截图所示：
 
-![actionFunction](/redux-3/actionFunction.png)
-![actionFunction_apply_connect](/redux-3/actionFunction_apply_connect.png)
-![actionFunction_apply_component](/redux-3/actionFunction_apply_component.png)
+![actionFunction](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/actionFunction.png)
+![actionFunction_apply_connect](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/actionFunction_apply_connect.png)
+![actionFunction_apply_component](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/actionFunction_apply_component.png)
 
 [action](https://codesandbox.io/s/shouxiereduxpianzhisan-function-action-xz232)
 
@@ -37,8 +37,8 @@ const getUser = ()=>{
 
 核心代码如截图所示：
 
-![asyncAction](/redux-3/asyncAction.png)
-![asyncAction_apply_component](/redux-3/asyncAction_apply_component.png)
+![asyncAction](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/asyncAction.png)
+![asyncAction_apply_component](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/asyncAction_apply_component.png)
 
 [async action](https://codesandbox.io/s/shouxiereduxpianzhisan-async-action-klvb2)
 
