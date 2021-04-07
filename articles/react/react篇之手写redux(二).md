@@ -53,7 +53,7 @@ export function connect(component) {
 }
 ```
 
-[完整代码](https://codesandbox.io/s/shouxiereduxpianzhier-youhuaappcontext-ulqgs)
+[完整代码-store](https://codesandbox.io/s/shouxiereduxpianzhier-youhuaappcontext-ulqgs)
 
 初始渲染正常，修改`user.name`字段时，组件并不更新。因为能触发组件更新的Api是`setState`，而使用App组件的`setState`又会有重复render的问题。
 
@@ -88,9 +88,11 @@ export function connect(component) {
 
 以上`connect`的第一个参数 `selector`其实对应的是`redux`的`connect`的第一参数`mapStateToProps`
 
-[mapStateToProps](https://codesandbox.io/s/shouxiereduxpianzhier-mapstatetoprops-mw5qy)
+[完整代码-mapStateToProps](https://codesandbox.io/s/shouxiereduxpianzhier-mapstatetoprops-mw5qy)
 
-订阅多次需要取消订阅
+**订阅需要取消订阅**
+
+核心代码如截图所示：
 
 ![unsubcribe](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/unsubcribe.png)
 ![unsubcribe_apply](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/unsubcribe_apply.png)
@@ -102,15 +104,16 @@ export function connect(component) {
 ![mapDispatchToProps](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/mapDispatchToProps.png)
 ![mapDispatchToProps_apply](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/mapDispatchToProps_apply.png)
 
-[mapDispatchToProps](https://codesandbox.io/s/shouxiereduxpianzhier-mapdispatchtoprops-2ohns)
+[完整代码-mapDispatchToProps](https://codesandbox.io/s/shouxiereduxpianzhier-mapdispatchtoprops-2ohns)
 
 #### connect(mapStateToProps, mapDispatchToProps)(Component)
+
 将以上代码按如上设计优化，核心代码如截图所示：
 
 ![connecters](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/connecters.png)
 ![connecters_apply](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/connecters_apply.png)
 
-[connecters](https://codesandbox.io/s/shouxiereduxpianzhier-connectmapstatetoprops-mapdispatchtopropscomponent-67bcn)
+[完整代码-connecters](https://codesandbox.io/s/shouxiereduxpianzhier-connectmapstatetoprops-mapdispatchtopropscomponent-67bcn)
 
 #### createStore
 redux风格
@@ -131,12 +134,11 @@ redux风格
 ![provider](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/provider.png)
 ![provider_apply](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/provider_apply.png)
 
-[provider](https://codesandbox.io/s/shouxiereduxpianzhier-provider-p2oqe)
+[完整代码-provider](https://codesandbox.io/s/shouxiereduxpianzhier-provider-p2oqe)
 
 **待完善之处：**
 
-+ 支持函数Action
-+ 支持异步Action
++ Redux Middleware
 
 有兴趣的可看下一篇[react篇之手写redux(三)](https://github.com/FredaFei/blogs/blob/master/articles/react/react%E7%AF%87%E4%B9%8B%E6%89%8B%E5%86%99redux(%E4%BA%8C).md)
 
