@@ -53,9 +53,11 @@ const getUser = ()=>{
 ```
 核心代码如截图所示：
 
-![actionFunction](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/actionFunction.png)
-![actionFunction_apply_connect](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/actionFunction_apply_connect.png)
-![actionFunction_apply_component](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/actionFunction_apply_component.png)
+![actionFunction](https://leanote.com/api/file/getImage?fileId=606d81f3ab64417265000383)
+
+![actionFunction_apply_connect](https://leanote.com/api/file/getImage?fileId=606d821bab64417465000310)
+
+![actionFunction_apply_component](https://leanote.com/api/file/getImage?fileId=606d8263ab64417465000313)
 
 [完整代码-action](https://codesandbox.io/s/shouxiereduxpianzhisan-function-action-xz232)
 
