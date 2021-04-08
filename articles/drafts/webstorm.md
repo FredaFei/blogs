@@ -23,7 +23,7 @@
         render(){
             return <div>$name$</div>;
         }
-    }
+    };
     
     export default $name$;
 ```
