@@ -20,6 +20,9 @@
 + [vue-cli3 自定义项目配置](./articles/vue/vue-cli3自定义项目配置.md)
 
 #### React
++ [react篇之手写redux(一)](./articles/react/react篇之手写redux(一).md)
++ [react篇之手写redux(二)](./articles/react/react篇之手写redux(二).md)
++ [react篇之手写redux(三)](./articles/react/react篇之手写redux(三).md)
 + [React篇之受控与非受控组件](./articles/react/react篇之受控与非受控组件.md)
 + [React篇之计算属性](./articles/react/react篇之计算属性.md)
 + [React篇之Hooks](./articles/react/react篇之Hooks.md)
