@@ -11,7 +11,7 @@
 
 **原因：** App组件中的state作了全局的`state`。
 
-#### 如何精准渲染，组件只在自己的数据变化时`render`
+#### 问题二： 如何精准渲染，组件只在自己的数据变化时`render`
 
 **解决方案**： 将appState独立出去。
 
@@ -55,7 +55,10 @@ export function connect(component) {
 
 [完整代码-store](https://codesandbox.io/s/shouxiereduxpianzhier-youhuaappcontext-ulqgs)
 
-初始渲染正常，修改`user.name`字段时，组件并不更新。因为能触发组件更新的Api是`setState`，而使用App组件的`setState`又会有重复render的问题。
+初始渲染正常。
+
+#### 问题三： 修改`user.name`字段时，组件并不更新。
+**原因：** 因为能触发组件更新的Api是`setState`，而使用App组件的`setState`又会有重复render的问题。
 
 **解决思路**：
 
@@ -71,7 +74,9 @@ export function connect(component) {
 [完整代码-subscribe](https://codesandbox.io/s/shouxiereduxpianzhier-youhuaappcontext-ulqgs)
 
 经测试，以上方案做到了修改全局`user.name`时，被`connect`后的组件，能更新成功。
-但是，被`connect`后的组件，没有使用`user.name`，也会被重新执行一次。因此并未做到完全的精准渲染。
+
+#### 问题四：被`connect`后的组件，没有使用`user.name`，也会被重新执行一次。
+因此并未做到完全的精准渲染。
 
 **优化方案**:
 
