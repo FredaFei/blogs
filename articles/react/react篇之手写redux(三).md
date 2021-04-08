@@ -65,14 +65,14 @@ const getUser = ()=>{
 
 核心代码如截图所示：
 
-![asyncAction](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/asyncAction.png)
-![asyncAction_apply_component](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/asyncAction_apply_component.png)
+![asyncAction](./images/redux-3/asyncAction.png)
+![asyncAction_apply_component](./images/redux-3/asyncAction_apply_component.png)
 
 [完整代码-async action](https://codesandbox.io/s/shouxiereduxpianzhisan-async-action-klvb2)
 
 redux-thunk源码的核心代码如截图所示：
 
-![redux-thunk-源码](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-3/redux-thunk.png)
+![redux-thunk-源码](./images/redux-3/redux-thunk.png)
 
 [redux-thunk-源码](https://github.com/reduxjs/redux-thunk/blob/master/src/index.js)
 
