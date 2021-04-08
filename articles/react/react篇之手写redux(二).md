@@ -1,4 +1,4 @@
-接着[react篇之手写redux(一)](https://github.com/FredaFei/blogs/blob/master/articles/react/react%E7%AF%87%E4%B9%8B%E6%89%8B%E5%86%99redux(%E4%B8%80).md)
+接着[react篇之手写redux(一)](./react篇之手写redux(一).md)
 文章最后提出的待完善问题，来个个击破吧。
 
 #### 问题一： 修改全局`state`时，每个组件均会多次render
@@ -64,9 +64,9 @@ export function connect(component) {
 
 核心代码如截图所示：
 
-![store-1](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/store-1.png)
+![store-1](./images/redux-2/store-1.png)
 
-![connect-1](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/connect-1.png)
+![connect-1](./images/redux-2/connect-1.png)
 
 [完整代码-subscribe](https://codesandbox.io/s/shouxiereduxpianzhier-youhuaappcontext-ulqgs)
 
@@ -94,15 +94,17 @@ export function connect(component) {
 
 核心代码如截图所示：
 
-![unsubcribe](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/unsubcribe.png)
-![unsubcribe_apply](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/unsubcribe_apply.png)
+![unsubcribe](./images/redux-2/unsubscribe.png)
+
+![unsubcribe_apply](./images/redux-2/unsubscribe_apply.png)
 
 #### mapDispatchToProps(修改state)
 
 核心代码如截图所示：
 
-![mapDispatchToProps](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/mapDispatchToProps.png)
-![mapDispatchToProps_apply](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/mapDispatchToProps_apply.png)
+![mapDispatchToProps](./images/redux-2/mapDispatchToProps.png)
+
+![mapDispatchToProps_apply](./images/redux-2/mapDispatchToProps_apply.png)
 
 [完整代码-mapDispatchToProps](https://codesandbox.io/s/shouxiereduxpianzhier-mapdispatchtoprops-2ohns)
 
@@ -110,8 +112,9 @@ export function connect(component) {
 
 将以上代码按如上设计优化，核心代码如截图所示：
 
-![connecters](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/connecters.png)
-![connecters_apply](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/connecters_apply.png)
+![connecters](./images/redux-2/connecters.png)
+
+![connecters_apply](./images/redux-2/connecters_apply.png)
 
 [完整代码-connecters](https://codesandbox.io/s/shouxiereduxpianzhier-connectmapstatetoprops-mapdispatchtopropscomponent-67bcn)
 
@@ -123,16 +126,18 @@ redux风格
 
 核心代码如截图所示：
 
-![createStore](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/createStore.png)
-![createStore_apply](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/createStore_apply.png)
+![createStore](./images/redux-2/createStore.png)
 
-[createStore](https://codesandbox.io/s/shouxiereduxpianzhier-createstore-ni1pj)
+![createStore_apply](./images/redux-2/createStore_apply.png)
+
+[完整代码-createStore](https://codesandbox.io/s/shouxiereduxpianzhier-createstore-ni1pj)
 
 #### 封装Provider
 核心代码如截图所示：
 
-![provider](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/provider.png)
-![provider_apply](https://github.com/FredaFei/blogs/blob/master/articles/react/images/redux-2/provider_apply.png)
+![provider](./images/redux-2/provider.png)
+
+![provider_apply](./images/redux-2/provider_apply.png)
 
 [完整代码-provider](https://codesandbox.io/s/shouxiereduxpianzhier-provider-p2oqe)
 
@@ -140,7 +145,7 @@ redux风格
 
 + Redux Middleware
 
-有兴趣的可看下一篇[react篇之手写redux(三)](https://github.com/FredaFei/blogs/blob/master/articles/react/react%E7%AF%87%E4%B9%8B%E6%89%8B%E5%86%99redux(%E4%BA%8C).md)
+有兴趣的可看下一篇[react篇之手写redux(三)](./react篇之手写redux(三).md)
 
 
 

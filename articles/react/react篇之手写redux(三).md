@@ -1,4 +1,4 @@
-接着[react篇之手写redux(一)]()
+接着[react篇之手写redux(一)](./react篇之手写redux(二).md)
 文章最后提出的待完善问题，来个个击破吧。
 
 #### Redux 中的Middleware是什么？
@@ -53,11 +53,11 @@ const getUser = ()=>{
 ```
 核心代码如截图所示：
 
-![actionFunction](https://leanote.com/api/file/getImage?fileId=606d81f3ab64417265000383)
+![actionFunction](./images/redux-3/actionFunction.png)
 
-![actionFunction_apply_connect](https://leanote.com/api/file/getImage?fileId=606d821bab64417465000310)
+![actionFunction_apply_connect](./images/redux-3/actionFunction_apply_connect.png)
 
-![actionFunction_apply_component](https://leanote.com/api/file/getImage?fileId=606d8263ab64417465000313)
+![actionFunction_apply_component](./images/redux-3/actionFunction_apply_component.png)
 
 [完整代码-action](https://codesandbox.io/s/shouxiereduxpianzhisan-function-action-xz232)
 
@@ -70,10 +70,13 @@ const getUser = ()=>{
 
 [完整代码-async action](https://codesandbox.io/s/shouxiereduxpianzhisan-async-action-klvb2)
 
-redux-thunk源码的核心代码如截图所示：
+以上是便是手写redux系列的中间件实现。至此整个redux手写系列已完成啦~~
+
+
+#### 参考：
+
+`redux-thunk`源码的核心代码如截图所示：
 
 ![redux-thunk-源码](./images/redux-3/redux-thunk.png)
 
 [redux-thunk-源码](https://github.com/reduxjs/redux-thunk/blob/master/src/index.js)
-
-以上是便是手写redux系列的中间件实现。至此整个redux手写系列已完成啦~~
