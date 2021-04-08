@@ -75,7 +75,8 @@ export function connect(component) {
 
 经测试，以上方案做到了修改全局`user.name`时，被`connect`后的组件，能更新成功。
 
-#### 问题四：被`connect`后的组件，没有使用`user.name`，也会被重新执行一次。
+#### 问题四：被`connect`后的组件，没有使用`user.name`，当`user.name`被修改时，也会被重新执行一次。
+
 因此并未做到完全的精准渲染。
 
 **优化方案**:
