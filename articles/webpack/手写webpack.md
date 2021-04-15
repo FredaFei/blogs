@@ -23,9 +23,9 @@
 + 所有依赖构建完成，执行plugin；
 + 输出到指定的目录，打包结束。
 
-#### 实现一个简易的 webpack
+## 实现一个简易的 webpack
 
-##### 准备工作
+#### 准备工作
 
 初始化项目，目录结构如下：
 
@@ -33,32 +33,31 @@
 tiny-webpack
 ├── dist
 │   ├── bundle.js
-│   ├── index.html
-├── build // webpack配置目录
-│   ├── webpack.config.js
 ├── lib  // 手写webpack源码目录
 │   ├── compier.js
+│   ├── parser.js
 ├── src 
 │   ├── index.html
 │   ├── index.js
 ├── index.js
+├── webpack.config.js
 ├── package.json
 ```
 
 依赖安装
 
 ```
-npm install babel-core babel-preset-env @babel/parser @babel/traverse
+npm install @babel/core @babel/parser @babel/traverse @babel/preset-env
 ```
 
 + @babel/parser：用于将源码生成AST
 + @babel/traverse：对AST节点进行递归遍历
-+ babel-core、babel-preset-env：将获得的ES6的AST转化成ES5
++ @babel/core、@babel/preset-env：将获得的ES6的AST转化成ES5
 
 小试牛刀：ES6转化成ES5
 
 ``` js
-// compiler.js
+// ./lib/compiler.js
 const fs = require('fs');
 const path = require('path');
 const parser = require('@babel/parser');
@@ -84,7 +83,7 @@ module.exports = function run(options) {
     });
     // 将获得的ES6的AST转化成ES5
     const { code } = transformFromAst(parsedAst, null, {
-        presets: [ 'env' ],
+        presets: [ '@babel/preset-env' ],
     });
 
     writeFileRecursive(outputDir, outputFilename, code, error => {
@@ -94,15 +93,15 @@ module.exports = function run(options) {
 ```
 
 ``` js
-// index.js
+// ./index.js
 const run = require('./lib/compiler');
-const webpackConfig = require('./build/webpack.config');
+const webpackConfig = require('./webpack.config');
 
 run(webpackConfig);
 ```
 
 ``` js
-// webpack.config.js
+// ./webpack.config.js
 const path = require('path');
 
 module.exports = {
@@ -120,21 +119,18 @@ module.exports = {
 + 将其从ES6转译为ES5；
 + 最后输出到指定目录。
 
-##### 手写Webpack
+#### 手写 Webpack
 
-代码如下：
+按照上文中的工作流程，代码如下：
 
 ```js
-// parser.js
-const fs = require('fs');
-const path = require('path');
+// ./lib/parser.js
 const parser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
-const { transformFromAst } = require('babel-core');
+const { transformFromAstSync } = require('@babel/core');
 
 module.exports = {
-    getAST(path) {
-        const source = fs.readFileSync(path, 'utf-8');
+    getAST(source) {
         return parser.parse(source, {
             sourceType: 'module', //表示要解析的是ES模块
         });
@@ -150,8 +146,8 @@ module.exports = {
     },
     transform(ast) {
         // 将获得的ES6的AST转化成ES5
-        const { code } = transformFromAst(ast, null, {
-            presets: [ 'env' ],
+        const { code } = transformFromAstSync(ast, null, {
+            presets: [ '@babel/preset-env' ],
         });
         return code;
     },
@@ -159,33 +155,18 @@ module.exports = {
 ```
 
 ```js
-// compiler.js
+// ./lib/compiler.js
 const fs = require('fs');
 const path = require('path');
+const { writeFileRecursive, formatPathSep } = require('./util/help');
 const { getAST, getDependencies, transform } = require('./parser');
-
-function writeFileRecursive(outputDir, outputFilename, buffer, callback) {
-    fs.mkdir(outputDir, { recursive: true }, (err) => {
-        if (err) return callback(err);
-        fs.writeFile(outputFilename, buffer, function (err) {
-            if (err) return callback(err);
-            return callback(null);
-        });
-    });
-};
-
-/**
- * 解决Linux与Windows下路径分隔符问题
- * */
-function formatPathSep(string) {
-    return string.split(path.sep).join('/');
-}
 
 module.exports = class Compiler {
     constructor(options) {
-        const { entry, output } = options;
+        const { entry, output, module = {} } = options;
         this.entry = formatPathSep(entry);
         this.output = output;
+        this.module = module;
         this.modules = [];
     }
 
@@ -196,7 +177,8 @@ module.exports = class Compiler {
 
     buildModule(filename, isEntry) {
         const _path = isEntry ? filename : path.join(process.cwd(), './src', filename);
-        const ast = getAST(formatPathSep(_path));
+        const source = this.getSource(formatPathSep(_path));
+        const ast = getAST(source);
         return {
             filename: formatPathSep(filename),
             dependencies: getDependencies(ast),
@@ -212,6 +194,11 @@ module.exports = class Compiler {
                 this.modules.push(this.buildModule(dependency));
             });
         });
+    }
+
+    getSource(modulePath) {
+        let content = fs.readFileSync(modulePath, 'utf8');
+        return content;
     }
 
     bundle() {
@@ -291,10 +278,10 @@ module.exports = class Compiler {
 
 + 将打包文件以匿名理解执行函数的格式输出；
 + `modules` 是一个数组，每一项是一个模块初始化函数；
-+ `__webpack_require__`用来加载模块，返回`module.exports`
-+ `__webpack_require__(0)`开始调用
++ `__webpack_require__`函数用来加载模块，返回`module.exports`
++ `__webpack_require__(0)`入口函数调用
 
-运行`npm run build`，`bundle.js`代码如下
+运行`npm run build`后，得到`./dist/bundle.js`代码如下
 
 ```js
 (function (modules) {
@@ -305,35 +292,40 @@ module.exports = class Compiler {
         return module.exports;
     }
 
-    require('D:/tiny-webpack/src/index.js');
+    require('D:/x/tiny-webpack/src/index.js');
 })({
-    'D:/tiny-webpack/src/index.js': function (require, module, exports) {
+    'D:/x/tiny-webpack/src/index.js': function (require, module, exports) {
         'use strict';
 
         var _add = require('./util/add.js');
 
-        var _multiply = require('./util/multiply.js');
+        var _multiply = _interopRequireDefault(require('./util/multiply.js'));
+
+        function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
         var a = (0, _add.add)(1, 4);
-        var b = (0, _multiply.multiply)(2, 4);
-        document.body.innerHTML = '<div>add: ' + a + '</div><div>multiply: ' + b + '</div>';
+        var b = (0, _multiply['default'])(2, 4);
+        document.body.innerHTML = '<div>add: '.concat(a, '</div><div>multiply: ').concat(b, '</div>');
     }, './util/add.js': function (require, module, exports) {
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
             value: true
         });
+        exports.add = void 0;
 
-        var add = exports.add = function add(x, y) {
+        var add = function add(x, y) {
             return x + y;
         };
+
+        exports.add = add;
     }, './util/multiply.js': function (require, module, exports) {
         'use strict';
 
         Object.defineProperty(exports, '__esModule', {
             value: true
         });
-        exports.multiply = multiply;
+        exports['default'] = multiply;
 
         function multiply(x, y) {
             return x * y;
@@ -341,7 +333,9 @@ module.exports = class Compiler {
     },
 });
 
+
 ```
+
 以上是整个手写 Webpack 打包实现的全部内容。
 
 [完整代码](https://github.com/FredaFei/tiny-webpack)
